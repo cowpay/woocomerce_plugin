@@ -87,8 +87,10 @@ class COWPAY_Payat_Fawry extends WC_Payment_Gateway {
 		// Get this Order's information so that we know
 		// who to charge and how much
 		$customer_order = new WC_Order( $order_id );
-		 $thanks_link    = $this->get_return_url($order);
-       $redirect       = add_query_arg('key', $order->order_key, add_query_arg('order', $order_id, $thanks_link));
+		 // $thanks_link    = $this->get_return_url($order);
+   //     $redirect       = add_query_arg('key', $order->order_key, add_query_arg('order', $order_id, $thanks_link));
+		 $thanks_link    = $this->get_return_url($customer_order);
+       $redirect       = add_query_arg('key', $customer_order->get_order_key(), add_query_arg('order', $order_id, $thanks_link));
         $callback_url   = WC()->api_request_url('COWPAY_AuthorizeNet_AIM');
 //	 die;
 		// Are we testing right now or is it a real transaction

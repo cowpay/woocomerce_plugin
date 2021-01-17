@@ -93,7 +93,8 @@ class COWPAY_Credit_Card extends WC_Payment_Gateway_CC
 		// who to charge and how much
 		$customer_order = new WC_Order($order_id);
 		$thanks_link    = $this->get_return_url($customer_order);
-		$redirect       = add_query_arg('key', $customer_order->order_key, add_query_arg('order', $order_id, $thanks_link));
+		// $redirect       = add_query_arg('key', $customer_order->order_key, add_query_arg('order', $order_id, $thanks_link));
+		$redirect       = add_query_arg('key', $customer_order->get_order_key(), add_query_arg('order', $order_id, $thanks_link));
 		$callback_url   = WC()->api_request_url('COWPAY_Credit_Card');
 		//	 die;
 		// Are we testing right now or is it a real transaction
